@@ -91,7 +91,11 @@ function ColorComponent() {
       >
         {color &&
           color.map((item, index) => {
-            return <Box key={index} component={"div"} sx={{ width: "10vw", height: "10vw", backgroundColor: item }} />;
+            return (
+              <Box key={index} component={"div"} sx={{ display:"flex", width: "10vw", height: "10vw", backgroundColor: item, alignItems: "center", justifyContent: "center" }}>
+                <Typography color={"white"}>{item}</Typography>
+              </Box>
+            );
           })}
       </Box>
     </Box>
