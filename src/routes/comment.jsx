@@ -105,9 +105,15 @@ function CommentComponent() {
               return (
                 <>
                   <ListItem key={index} disablePadding>
-                    <ListItemText primary={item.comment} sx={{p:2}} />
+                    <ListItemText primary={item.comment} sx={{ p: 2 }} />
                   </ListItem>
                   <Divider />
+                  <ListItem key={`replies-${index}`} disablePadding sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                    {item?.replies?.map((reply, idx) => {
+                      return <ListItemText key={`reply-${item.comment}-${idx}`} secondary={reply} sx={{ pl: 4 }} />;
+                    })}
+                    <Divider />
+                  </ListItem>
                 </>
               );
             })}
