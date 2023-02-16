@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -24,10 +25,11 @@ import MainListItems from "../dashboard/listItems";
 
 function ColorComponent() {
   const [color, setColor] = React.useState([]);
+  const [number, setNumber] = React.useState(5);
 
   const handleAPI = async () => {
     try {
-      const res = await fetch(`https://fastapi-google-trend.up.railway.app/api/color`);
+      const res = await fetch(`https://fastapi-google-trend.up.railway.app/api/color?n=${number}`);
       const json = await res.json();
       if (typeof json.result !== "undefined") {
         setColor(json.result);
@@ -53,12 +55,26 @@ function ColorComponent() {
       autoComplete="off"
     >
       <Typography component="h2" variant="h3" color="primary" gutterBottom sx={{ mb: 2, mt: 10 }}>
-        Color Paleltte
+        Color Palette
       </Typography>
       <Typography component="h2" variant="h6" color="warning" gutterBottom>
         You can get 5 color recommendation.
       </Typography>
-      <Button variant="contained" onClick={handleAPI} sx={{mt:3}}>
+      <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{ my: 2 }}>
+        <Button disabled={number === 1 ? true : false} onClick={() => setNumber(1)}>
+          1개
+        </Button>
+        <Button disabled={number === 3 ? true : false} onClick={() => setNumber(3)}>
+          3개
+        </Button>
+        <Button disabled={number === 5 ? true : false} onClick={() => setNumber(5)}>
+          5개
+        </Button>
+        <Button disabled={number === 7 ? true : false} onClick={() => setNumber(7)}>
+          7개
+        </Button>
+      </ButtonGroup>
+      <Button variant="contained" onClick={handleAPI} sx={{ mt: 3 }}>
         Get color
       </Button>
       <Box
@@ -68,7 +84,7 @@ function ColorComponent() {
           flexDirection: "row",
           my: 5,
           alignItems: "center",
-          justifyItems:"center"
+          justifyItems: "center",
         }}
         noValidate
         autoComplete="off"

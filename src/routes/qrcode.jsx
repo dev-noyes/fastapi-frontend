@@ -27,7 +27,6 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MainListItems from "../dashboard/listItems";
 
 function QRcodeComponent() {
-  const [isSearch, setSearch] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [image, setImage] = React.useState("");
 
@@ -37,6 +36,7 @@ function QRcodeComponent() {
       const json = await res.json();
       if (typeof json.result !== "undefined") {
         setImage(json.result);
+        setValue("");
       } else {
         throw Error("404@API error");
       }
@@ -47,6 +47,10 @@ function QRcodeComponent() {
   const validation = () => {
     const regex = /^.{1,30}$/;
     return !regex.test(value);
+  };
+  const handleSearch = async () => {
+    if (value === "") alert("Not working");
+    else await handleAPI();
   };
 
   return (
@@ -83,6 +87,7 @@ function QRcodeComponent() {
         <TextField
           fullWidth
           error={validation()}
+          value={value}
           onChange={(e) => setValue(e.target.value)}
           margin="normal"
           id="outlined-basic"
@@ -91,8 +96,8 @@ function QRcodeComponent() {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={isSearch ? alert("Not working") : handleAPI} onMouseDown={null} edge="end">
-                  {isSearch ? <SearchOffIcon /> : <SearchIcon />}
+                <IconButton onClick={handleSearch} onMouseDown={null} edge="end">
+                  {value === "" ? <SearchOffIcon /> : <SearchIcon />}
                 </IconButton>
               </InputAdornment>
             ),
