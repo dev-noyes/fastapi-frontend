@@ -9,6 +9,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import CommentIcon from "@mui/icons-material/Comment";
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import InvertColorsIcon from '@mui/icons-material/InvertColors';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
 import { useNavigate } from "react-router-dom";
 
@@ -57,6 +58,12 @@ export default function MainListItems() {
           <InvertColorsIcon />
         </ListItemIcon>
         <ListItemText primary="Image color" />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate("/memo")}>
+        <ListItemIcon>
+          <DriveFileRenameOutlineIcon />
+        </ListItemIcon>
+        <ListItemText primary="Online Memo" />
       </ListItemButton>
     </React.Fragment>
   );

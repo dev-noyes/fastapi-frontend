@@ -13,6 +13,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Popular from "./routes/popular";
 import Analysis from "./routes/analysis";
 import ImageColorPalette from "./routes/image-palette";
+import Memo from "./routes/memo";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
   {
     path: "/color_palette",
     element: <ImageColorPalette />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/memo",
+    element: <Memo />,
     errorElement: <ErrorPage />,
   },
 ]);
