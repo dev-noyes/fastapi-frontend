@@ -7,6 +7,8 @@ import QrCodeIcon from "@mui/icons-material/QrCode";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import CommentIcon from "@mui/icons-material/Comment";
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import InvertColorsIcon from '@mui/icons-material/InvertColors';
 
 import { useNavigate } from "react-router-dom";
 
@@ -40,9 +42,21 @@ export default function MainListItems() {
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/youtube-popular")}>
         <ListItemIcon>
-          <BarChartIcon />
+          <OndemandVideoIcon />
         </ListItemIcon>
         <ListItemText primary="Popular" />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate("/youtube-analysis")}>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Analysis" />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate("/color_palette")}>
+        <ListItemIcon>
+          <InvertColorsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Image color" />
       </ListItemButton>
     </React.Fragment>
   );

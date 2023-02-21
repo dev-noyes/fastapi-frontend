@@ -11,6 +11,8 @@ import reportWebVitals from "./reportWebVitals";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Popular from "./routes/popular";
+import Analysis from "./routes/analysis";
+import ImageColorPalette from "./routes/image-palette";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,16 @@ const router = createBrowserRouter([
   {
     path: "/youtube-popular",
     element: <Popular />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/youtube-analysis",
+    element: <Analysis />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/color_palette",
+    element: <ImageColorPalette />,
     errorElement: <ErrorPage />,
   },
 ]);
