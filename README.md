@@ -7,11 +7,17 @@
 - mui v5
 - reactjs v18
 - react-router-dom v6.8
+- draft-js
+- react-type-animation 
 
 ## 프로젝트 실행
 
 `npm start` 커맨드를 사용하시면 됩니다.
 여기를 [http://localhost:3000](http://localhost:3000) 열면 작동하실 겁니다.
+
+## 메인 화면 
+- react typing animation 추가
+- MUI 이미지 리스트 추가
 
 
 ## 큐알코드 제너레이터
@@ -42,4 +48,7 @@
 - rest api 를 가지고 만들었습니다.
 - 비디오id는 11개라 11글자 검증 기능이 있습니다.
 - 현재 대댓글 미지원 (표시 안함)
+
+## 온라인 메모장 추가
+- draft-js 추가
 
