@@ -5,8 +5,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
@@ -16,14 +14,18 @@ import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
 import MainListItems from "../dashboard/listItems";
+import Copyright from "../components/Copyright";
+import AppBar from "../components/Appbar";
+import Drawer from "../components/Drawer";
 
-function ColorComponent() {
+const COLOR = "#1d1d1b";
+
+function Component() {
   const [color, setColor] = React.useState([]);
   const [number, setNumber] = React.useState(5);
 
@@ -92,7 +94,11 @@ function ColorComponent() {
         {color &&
           color.map((item, index) => {
             return (
-              <Box key={index} component={"div"} sx={{ display:"flex", width: "10vw", height: "10vw", backgroundColor: item, alignItems: "center", justifyContent: "center" }}>
+              <Box
+                key={index}
+                component={"div"}
+                sx={{ display: "flex", width: "10vw", height: "10vw", backgroundColor: item, alignItems: "center", justifyContent: "center" }}
+              >
                 <Typography color={"white"}>{item}</Typography>
               </Box>
             );
@@ -101,63 +107,6 @@ function ColorComponent() {
     </Box>
   );
 }
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        DongjunYang
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const drawerWidth = 240;
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(({ theme, open }) => ({
-  "& .MuiDrawer-paper": {
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    boxSizing: "border-box",
-    ...(!open && {
-      overflowX: "hidden",
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      width: theme.spacing(7),
-      [theme.breakpoints.up("sm")]: {
-        width: theme.spacing(9),
-      },
-    }),
-  },
-}));
 
 const mdTheme = createTheme();
 
@@ -171,7 +120,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" open={open} color="transparent">
           <Toolbar
             sx={{
               pr: "24px", // keep right padding when drawer closed
@@ -187,19 +136,19 @@ function DashboardContent() {
                 ...(open && { display: "none" }),
               }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "#fff" }} />
             </IconButton>
-            <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-              Dashboard
+            <Typography component="h1" variant="h6" color="#fff" noWrap sx={{ flexGrow: 1 }}>
+              Color
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+              <Badge badgeContent={4} color="primary">
+                <NotificationsIcon sx={{ color: "#fff" }} />
               </Badge>
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open} sx={{ bgcolor: COLOR }}>
           <Toolbar
             sx={{
               display: "flex",
@@ -209,7 +158,7 @@ function DashboardContent() {
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon sx={{ color: "#fff" }}/>
             </IconButton>
           </Toolbar>
           <Divider />
@@ -221,7 +170,7 @@ function DashboardContent() {
         <Box
           component="main"
           sx={{
-            backgroundColor: (theme) => (theme.palette.mode === "light" ? theme.palette.grey[100] : theme.palette.grey[900]),
+            backgroundColor: "#000",
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",
@@ -232,7 +181,7 @@ function DashboardContent() {
             <Grid container spacing={3}>
               <Grid item xs={12} md={12} lg={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <ColorComponent />
+                  <Component />
                 </Paper>
               </Grid>
             </Grid>

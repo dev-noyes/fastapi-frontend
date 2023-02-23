@@ -5,11 +5,7 @@ import { Editor, EditorState, RichUtils } from "draft-js";
 import "draft-js/dist/Draft.css";
 
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
-import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
@@ -31,10 +27,13 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import LayersClearIcon from "@mui/icons-material/LayersClear";
-import FormatClearIcon from '@mui/icons-material/FormatClear';
 
 import MainListItems from "../dashboard/listItems";
-import { display } from "@mui/system";
+import Copyright from "../components/Copyright";
+import AppBar from "../components/Appbar";
+import Drawer from "../components/Drawer";
+
+const COLOR = "#1d1d1b";
 
 function Component() {
   const MemoEditor = () => {
@@ -136,98 +135,7 @@ function Component() {
   };
 
   return <MemoEditor />;
-
-  return {
-    /* <Box
-      id="div-memo"
-      component="div"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyItems: "center",
-        alignItems: "center",
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <Typography component="h2" variant="h3" color="primary" gutterBottom sx={{ mb: 2, mt: 10 }}>
-        Online Memo
-      </Typography>
-      <Typography component="h2" variant="h6" color="warning" gutterBottom>
-        You can write any memos and copy it for free
-      </Typography>
-      <Box
-        component="div"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyItems: "center",
-          alignItems: "center",
-          bgcolor: "#3333",
-        }}
-      >
-        <MemoEditor />
-      </Box>
-    </Box> */
-  };
 }
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        DongjunYang
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const drawerWidth = 240;
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(({ theme, open }) => ({
-  "& .MuiDrawer-paper": {
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    boxSizing: "border-box",
-    ...(!open && {
-      overflowX: "hidden",
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      width: theme.spacing(7),
-      [theme.breakpoints.up("sm")]: {
-        width: theme.spacing(9),
-      },
-    }),
-  },
-}));
 
 const mdTheme = createTheme();
 
@@ -241,7 +149,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" open={open} color="transparent">
           <Toolbar
             sx={{
               pr: "24px", // keep right padding when drawer closed
@@ -257,19 +165,19 @@ function DashboardContent() {
                 ...(open && { display: "none" }),
               }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "#fff" }} />
             </IconButton>
-            <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-              Dashboard
+            <Typography component="h1" variant="h6" color="#fff" noWrap sx={{ flexGrow: 1 }}>
+              Online Memo
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+              <Badge badgeContent={4} color="primary">
+                <NotificationsIcon sx={{ color: "#fff" }} />
               </Badge>
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open} sx={{ bgcolor: COLOR }}>
           <Toolbar
             sx={{
               display: "flex",
@@ -279,7 +187,7 @@ function DashboardContent() {
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon sx={{ color: "#fff" }}/>
             </IconButton>
           </Toolbar>
           <Divider />
@@ -291,7 +199,7 @@ function DashboardContent() {
         <Box
           component="main"
           sx={{
-            backgroundColor: (theme) => (theme.palette.mode === "light" ? theme.palette.grey[100] : theme.palette.grey[900]),
+            backgroundColor: "#000",
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",

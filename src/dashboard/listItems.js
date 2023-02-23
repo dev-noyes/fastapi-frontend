@@ -10,7 +10,7 @@ import CommentIcon from "@mui/icons-material/Comment";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import InvertColorsIcon from "@mui/icons-material/InvertColors";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-
+import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 
 export default function MainListItems() {
@@ -18,6 +18,12 @@ export default function MainListItems() {
   const style = { color: "#fff" };
   return (
     <React.Fragment>
+      <ListItemButton onClick={() => navigate("/")}>
+        <ListItemIcon>
+          <HomeIcon sx={style} />
+        </ListItemIcon>
+        <ListItemText primary="Home" sx={style} />
+      </ListItemButton>
       <ListItemButton onClick={() => navigate("/qrcode")}>
         <ListItemIcon>
           <QrCodeIcon sx={style} />

@@ -30,12 +30,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
 import MainListItems from "../dashboard/listItems";
+import Copyright from "../components/Copyright";
+import AppBar from "../components/Appbar";
+import Drawer from "../components/Drawer";
 
-function createData(index, name, region) {
-  return { index, name, region };
-}
+const COLOR = "#1d1d1b";
 
-function TrendComponent() {
+function Component() {
   const [region, setRegion] = React.useState("US");
   const [trend, setTrend] = React.useState([]);
 
@@ -75,7 +76,7 @@ function TrendComponent() {
       <Typography component="h2" variant="h6" color="warning" gutterBottom>
         Please select region you want to check
       </Typography>
-      <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{my:2}}>
+      <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{ my: 2 }}>
         <Button disabled={region === "US" ? true : false} onClick={() => setRegion("US")}>
           America
         </Button>
@@ -115,63 +116,6 @@ function TrendComponent() {
   );
 }
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        DongjunYang
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const drawerWidth = 240;
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(({ theme, open }) => ({
-  "& .MuiDrawer-paper": {
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    boxSizing: "border-box",
-    ...(!open && {
-      overflowX: "hidden",
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      width: theme.spacing(7),
-      [theme.breakpoints.up("sm")]: {
-        width: theme.spacing(9),
-      },
-    }),
-  },
-}));
-
 const mdTheme = createTheme();
 
 function DashboardContent() {
@@ -184,7 +128,7 @@ function DashboardContent() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" open={open} color="transparent">
           <Toolbar
             sx={{
               pr: "24px", // keep right padding when drawer closed
@@ -200,19 +144,19 @@ function DashboardContent() {
                 ...(open && { display: "none" }),
               }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "#fff" }} />
             </IconButton>
-            <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-              Dashboard
+            <Typography component="h1" variant="h6" color="#fff" noWrap sx={{ flexGrow: 1 }}>
+              Trend
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+              <Badge badgeContent={4} color="primary">
+                <NotificationsIcon sx={{ color: "#fff" }} />
               </Badge>
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open} sx={{ bgcolor: COLOR }}>
           <Toolbar
             sx={{
               display: "flex",
@@ -222,7 +166,7 @@ function DashboardContent() {
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon sx={{ color: "#fff" }}/>
             </IconButton>
           </Toolbar>
           <Divider />
@@ -234,7 +178,7 @@ function DashboardContent() {
         <Box
           component="main"
           sx={{
-            backgroundColor: (theme) => (theme.palette.mode === "light" ? theme.palette.grey[100] : theme.palette.grey[900]),
+            backgroundColor: "#000",
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",
@@ -245,7 +189,7 @@ function DashboardContent() {
             <Grid container spacing={3}>
               <Grid item xs={12} md={12} lg={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <TrendComponent />
+                  <Component />
                 </Paper>
               </Grid>
             </Grid>
