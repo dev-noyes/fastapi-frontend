@@ -7,63 +7,64 @@ import QrCodeIcon from "@mui/icons-material/QrCode";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import CommentIcon from "@mui/icons-material/Comment";
-import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
-import InvertColorsIcon from '@mui/icons-material/InvertColors';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import InvertColorsIcon from "@mui/icons-material/InvertColors";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 
 import { useNavigate } from "react-router-dom";
 
 export default function MainListItems() {
   const navigate = useNavigate();
+  const style = { color: "#fff" };
   return (
     <React.Fragment>
       <ListItemButton onClick={() => navigate("/qrcode")}>
         <ListItemIcon>
-          <QrCodeIcon />
+          <QrCodeIcon sx={style} />
         </ListItemIcon>
-        <ListItemText primary="QRcode" />
+        <ListItemText primary="QRcode" sx={style} />
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/color")}>
         <ListItemIcon>
-          <ColorLensIcon />
+          <ColorLensIcon sx={style} />
         </ListItemIcon>
-        <ListItemText primary="Color" />
+        <ListItemText primary="Color" sx={style} />
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/google-trend")}>
         <ListItemIcon>
-          <TrendingUpIcon />
+          <TrendingUpIcon sx={style} />
         </ListItemIcon>
-        <ListItemText primary="Trends" />
+        <ListItemText primary="Trends" sx={style} />
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/youtube-comment")}>
         <ListItemIcon>
-          <CommentIcon />
+          <CommentIcon sx={style} />
         </ListItemIcon>
-        <ListItemText primary="Comment" />
+        <ListItemText primary="Comment" sx={style} />
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/youtube-popular")}>
         <ListItemIcon>
-          <OndemandVideoIcon />
+          <OndemandVideoIcon sx={style} />
         </ListItemIcon>
-        <ListItemText primary="Popular" />
+        <ListItemText primary="Popular" sx={style} />
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/youtube-analysis")}>
         <ListItemIcon>
-          <BarChartIcon />
+          <BarChartIcon sx={style} />
         </ListItemIcon>
-        <ListItemText primary="Analysis" />
+        <ListItemText primary="Analysis" sx={style} />
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/color_palette")}>
         <ListItemIcon>
-          <InvertColorsIcon />
+          <InvertColorsIcon sx={style} />
         </ListItemIcon>
-        <ListItemText primary="Image color" />
+        <ListItemText primary="Image color" sx={style} />
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/memo")}>
         <ListItemIcon>
-          <DriveFileRenameOutlineIcon />
+          <DriveFileRenameOutlineIcon sx={style} />
         </ListItemIcon>
-        <ListItemText primary="Online Memo" />
+        <ListItemText primary="Online Memo" sx={style} />
       </ListItemButton>
     </React.Fragment>
   );

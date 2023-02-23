@@ -37,6 +37,7 @@ function Copyright(props) {
 }
 
 const drawerWidth = 240;
+const COLOR = "#1d1d1b";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -61,6 +62,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" 
     position: "relative",
     whiteSpace: "nowrap",
     width: drawerWidth,
+    backgroundColor: COLOR,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -108,7 +110,7 @@ function DashboardContent() {
                 ...(open && { display: "none" }),
               }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "#fff" }} />
             </IconButton>
             <Typography component="h1" variant="h6" color="#fff" noWrap sx={{ flexGrow: 1 }}>
               Dashboard
@@ -120,10 +122,10 @@ function DashboardContent() {
             </IconButton>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open} sx={{ bgcolor: "#fff" }}>
+        <Drawer variant="permanent" open={open} sx={{ bgcolor: COLOR }}>
           <Toolbar
             sx={{
-              bgcolor: "#fff",
+              bgcolor: COLOR,
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-end",
@@ -131,11 +133,11 @@ function DashboardContent() {
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon sx={{ color: "#fff" }} />
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav" sx={{ bgcolor: "#fff" }}>
+          <List component="nav" sx={{ bgcolor: COLOR }}>
             <MainListItems />
             <Divider sx={{ my: 1 }} />
           </List>
