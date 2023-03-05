@@ -14,6 +14,7 @@ import Popular from "./routes/popular";
 import Analysis from "./routes/analysis";
 import ImageColorPalette from "./routes/image-palette";
 import Memo from "./routes/memo";
+import Blog from "./routes/blog";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
   {
     path: "/memo",
     element: <Memo />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/blog",
+    element: <Blog />,
     errorElement: <ErrorPage />,
   },
 ]);

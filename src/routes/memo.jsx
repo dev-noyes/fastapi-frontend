@@ -38,6 +38,12 @@ const COLOR = "#1d1d1b";
 function Component() {
   const MemoEditor = () => {
     const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty());
+    const editor = React.useRef(null);
+
+    React.useEffect(() => {
+      editor.current.focus();
+    }, []);
+
     const onUtilType = (type) => {
       // type BOLD ITALIC UNDERLINE
       setEditorState(RichUtils.toggleInlineStyle(editorState, type));
@@ -54,6 +60,13 @@ function Component() {
         display: "inline",
         boxShadow: "inset 0 -0.5vw 0 #f5cac3",
       },
+    };
+
+    const myBlockStyleFn = (contentBlock) => {
+      const type = contentBlock.getType();
+      if (type === "blockquote") {
+        return "superFancyBlockquote";
+      }
     };
 
     return (
@@ -128,7 +141,19 @@ function Component() {
             my: 2,
           }}
         >
-          <Editor customStyleMap={styleMap} editorState={editorState} onChange={setEditorState} />
+          <Editor
+            placeholder="Hello"
+            blockStyleFn={myBlockStyleFn}
+            ref={editor}
+            customStyleMap={styleMap}
+            editorState={editorState}
+            onChange={React.useCallback(
+              (rawcontent) => {
+                setEditorState(rawcontent);
+              },
+              [editorState]
+            )}
+          />
         </Box>
       </div>
     );
@@ -187,7 +212,7 @@ function DashboardContent() {
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon sx={{ color: "#fff" }}/>
+              <ChevronLeftIcon sx={{ color: "#fff" }} />
             </IconButton>
           </Toolbar>
           <Divider />

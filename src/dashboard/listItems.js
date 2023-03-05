@@ -72,6 +72,12 @@ export default function MainListItems() {
         </ListItemIcon>
         <ListItemText primary="Online Memo" sx={style} />
       </ListItemButton>
+      <ListItemButton onClick={() => navigate("/blog")}>
+        <ListItemIcon>
+          <DriveFileRenameOutlineIcon sx={style} />
+        </ListItemIcon>
+        <ListItemText primary="Blog" sx={style} />
+      </ListItemButton>
     </React.Fragment>
   );
 }
