@@ -31,6 +31,8 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import MainListItems from "../dashboard/listItems";
 import Copyright from "../components/Copyright";
@@ -43,10 +45,17 @@ function Component() {
   const [region, setRegion] = React.useState("US");
   const [value, setValue] = React.useState("");
   const [data, setData] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
 
   const validation = () => {
     const regex = /^.{1,30}$/;
     return !regex.test(value);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
   };
   const handleSearch = () => {
     if (value === "") alert("Not working");
@@ -54,6 +63,7 @@ function Component() {
   };
   const handleAPI = async () => {
     try {
+      setOpen(true);
       const res = await fetch(`https://fastapi-google-trend.up.railway.app/api/youtube_analysis?topic=${value}&region=${region}`);
       const json = await res.json();
       if (typeof json.result === "undefined") {
@@ -64,6 +74,9 @@ function Component() {
       }
     } catch (err) {
       console.error(err);
+    }
+    finally{
+      setOpen(false);
     }
   };
 
@@ -161,6 +174,13 @@ function Component() {
           </Table>
         </TableContainer>
       </Box>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Box>
   );
 }

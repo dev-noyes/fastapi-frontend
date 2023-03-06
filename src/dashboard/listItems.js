@@ -11,6 +11,8 @@ import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import InvertColorsIcon from "@mui/icons-material/InvertColors";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import HomeIcon from "@mui/icons-material/Home";
+import BookIcon from '@mui/icons-material/Book';
+
 import { useNavigate } from "react-router-dom";
 
 export default function MainListItems() {
@@ -74,7 +76,7 @@ export default function MainListItems() {
       </ListItemButton>
       <ListItemButton onClick={() => navigate("/blog")}>
         <ListItemIcon>
-          <DriveFileRenameOutlineIcon sx={style} />
+          <BookIcon sx={style} />
         </ListItemIcon>
         <ListItemText primary="Blog" sx={style} />
       </ListItemButton>

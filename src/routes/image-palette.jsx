@@ -23,6 +23,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import MainListItems from "../dashboard/listItems";
 import Copyright from "../components/Copyright";
@@ -34,6 +36,14 @@ const COLOR = "#1d1d1b";
 function Component() {
   const [data, setData] = React.useState(null);
   const [file, setFile] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
   const resizeFile = (file) =>
     new Promise((resolve) => {
@@ -64,7 +74,7 @@ function Component() {
     try {
       event.preventDefault();
       setData(null);
-
+      setOpen(false);
       const formData = new FormData();
       formData.append("file", file);
 
@@ -83,6 +93,9 @@ function Component() {
       }
     } catch (err) {
       console.error(err);
+    }
+    finally{
+      setOpen(false);
     }
   };
 
@@ -141,6 +154,13 @@ function Component() {
             );
           })}
       </Box>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Box>
   );
 }

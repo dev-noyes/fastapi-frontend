@@ -27,6 +27,8 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import MainListItems from "../dashboard/listItems";
 import Copyright from "../components/Copyright";
@@ -38,14 +40,21 @@ const COLOR = "#1d1d1b";
 function Component() {
   const [query, setQuery] = React.useState("");
   const [trend, setTrend] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
 
   const validation = () => {
     const regex = /^.{1,30}$/;
     return !regex.test(query);
   };
-
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
   const handleAPI = async () => {
     try {
+      setOpen(true);
       const res = await fetch(`https://fastapi-google-trend.up.railway.app/api/blogs?query=${query}`);
       const json = await res.json();
       if (json && json.length > 0) {
@@ -58,6 +67,9 @@ function Component() {
       }
     } catch (err) {
       console.error(err);
+    }
+    finally{
+      setOpen(false);
     }
   };
 
@@ -139,6 +151,13 @@ function Component() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Box>
   );
 }
