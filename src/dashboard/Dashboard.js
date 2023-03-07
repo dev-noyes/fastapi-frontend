@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { TypeAnimation } from "react-type-animation";
@@ -16,13 +17,17 @@ import Grid from "@mui/material/Grid";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import AppImageList from "../components/AppImageList";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 import MainListItems from "./listItems";
 
 import Copyright from "../components/Copyright";
 import AppBar from "../components/Appbar";
 import Drawer from "../components/Drawer";
+import ComputersCanvas from "../components/Computers";
+import BallCanvas from "../components/Ball";
+//import { Followers } from "../components/Followers";
 
 const COLOR = "#1d1d1b";
 
@@ -119,14 +124,25 @@ function DashboardContent() {
                     repeat={Infinity}
                     style={{ fontSize: "5vw", color: "#fff" }}
                   />
-                  <Typography color="#fefefe">Here is my youtube channel</Typography>
+                  <Typography color="#fefefe" >
+                    <ArrowCircleLeftIcon />
+                    왼쪽의 서비스들을 선택해주세요.
+                  </Typography>
+                  <Typography color="#fefefe">
+                    <YouTubeIcon />
+                    유투브 채널 링크입니다.
+                  </Typography>
                   <a href={"https://youtube.com/@yangdongjun"} target="_blank" style={{ textDecoration: "none" }}>
-                    <Button variant="contained" color="primary" sx={{ mt: 2, mb: 10 }}>
+                    <Button variant="contained" color="info" sx={{ mt: 2, mb: 10, backgroundColor:"red" }}>
                       Youtube
                     </Button>
                   </a>
-                  <Typography color="#fefefe">Please select left side services</Typography>
-                  <AppImageList />
+                  {/* <AppImageList /> */}
+                  {/* <ComputersCanvas /> */}
+                  <Typography color="#fefefe" variant="h6" sx={{mb:3}}>
+                    제가 주로 사용하는 기술입니다.
+                  </Typography>
+                  <BallCanvas />
                 </Box>
               </Grid>
             </Grid>
