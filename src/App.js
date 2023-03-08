@@ -1,4 +1,4 @@
-import Dashboard from "./dashboard/dashboard";
+import Dashboard from "./dashboard/main";
 
 function App() {
   return (

@@ -21,10 +21,10 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 
 import MainListItems from "./listItems";
 
-import Copyright from "../components/copyright";
+import Copyright from "../components/copy-right";
 import AppBar from "../components/app-bar";
-import Drawer from "../components/drawer";
-import BallCanvas from "../components/ball";
+import Drawer from "../components/side-drawer";
+import BallCanvas from "../components/stack";
 import YoutubeFollowers from "../components/youtube-count";
 import Career from "../components/career";
 

@@ -30,9 +30,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
 import MainListItems from "../dashboard/listItems";
-import Copyright from "../components/copyright";
+import Copyright from "../components/copy-right";
 import AppBar from "../components/app-bar";
-import Drawer from "../components/drawer";
+import Drawer from "../components/side-drawer";
 
 function Component() {
   const [region, setRegion] = React.useState("US");

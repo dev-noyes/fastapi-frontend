@@ -19,9 +19,9 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
 import MainListItems from "../dashboard/listItems";
-import Copyright from "../components/copyright";
+import Copyright from "../components/copy-right";
 import AppBar from "../components/app-bar";
-import Drawer from "../components/drawer";
+import Drawer from "../components/side-drawer";
 
 const COLOR = "#1d1d1b";
 
