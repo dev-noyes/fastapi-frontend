@@ -25,9 +25,9 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
 import MainListItems from "../dashboard/listItems";
-import Copyright from "../components/Copyright";
-import AppBar from "../components/Appbar";
-import Drawer from "../components/Drawer";
+import Copyright from "../components/copyright";
+import AppBar from "../components/app-bar";
+import Drawer from "../components/drawer";
 
 function Component() {
   const [value, setValue] = React.useState("");

@@ -27,9 +27,9 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import MainListItems from "../dashboard/listItems";
-import Copyright from "../components/Copyright";
-import AppBar from "../components/Appbar";
-import Drawer from "../components/Drawer";
+import Copyright from "../components/copyright";
+import AppBar from "../components/app-bar";
+import Drawer from "../components/drawer";
 
 const COLOR = "#1d1d1b";
 

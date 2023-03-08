@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { TypeAnimation } from "react-type-animation";
 
@@ -22,12 +21,12 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 
 import MainListItems from "./listItems";
 
-import Copyright from "../components/Copyright";
-import AppBar from "../components/Appbar";
-import Drawer from "../components/Drawer";
-import ComputersCanvas from "../components/Computers";
-import BallCanvas from "../components/Ball";
-//import { Followers } from "../components/Followers";
+import Copyright from "../components/copyright";
+import AppBar from "../components/app-bar";
+import Drawer from "../components/drawer";
+import BallCanvas from "../components/ball";
+import YoutubeFollowers from "../components/youtube-count";
+import Career from "../components/career";
 
 const COLOR = "#1d1d1b";
 
@@ -124,25 +123,20 @@ function DashboardContent() {
                     repeat={Infinity}
                     style={{ fontSize: "5vw", color: "#fff" }}
                   />
-                  <Typography color="#fefefe" >
-                    <ArrowCircleLeftIcon />
-                    왼쪽의 서비스들을 선택해주세요.
-                  </Typography>
-                  <Typography color="#fefefe">
-                    <YouTubeIcon />
-                    유투브 채널 링크입니다.
-                  </Typography>
-                  <a href={"https://youtube.com/@yangdongjun"} target="_blank" style={{ textDecoration: "none" }}>
-                    <Button variant="contained" color="info" sx={{ mt: 2, mb: 10, backgroundColor:"red" }}>
+                  <YoutubeFollowers />
+                  <a href={"https://youtube.com/@yangdongjun"} target="_blank" style={{ marginBottom: "5vh", textDecoration: "none" }}>
+                    <Button variant="contained" color="info" sx={{ backgroundColor: "red" }}>
                       Youtube
                     </Button>
                   </a>
-                  {/* <AppImageList /> */}
-                  {/* <ComputersCanvas /> */}
-                  <Typography color="#fefefe" variant="h6" sx={{mb:3}}>
-                    제가 주로 사용하는 기술입니다.
+                  <Typography color="#fefefe" variant="h6" sx={{ mb: 3 }}>
+                    주로 사용하는 기술
                   </Typography>
                   <BallCanvas />
+                  <Typography color="#fefefe" variant="h6" sx={{ mt: 10 }}>
+                    전자책 - 크몽 입점
+                  </Typography>
+                  <Career />
                 </Box>
               </Grid>
             </Grid>
