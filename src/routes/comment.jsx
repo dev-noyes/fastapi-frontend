@@ -89,6 +89,12 @@ function Component() {
         <TextField
           fullWidth
           error={validation()}
+          onKeyDown={async(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              await handleAPI();
+            }
+          }}
           onChange={(e) => setValue(e.target.value)}
           margin="normal"
           id="outlined-basic"

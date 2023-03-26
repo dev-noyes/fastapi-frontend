@@ -27,8 +27,8 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import MainListItems from "../dashboard/listItems";
 import Copyright from "../components/copy-right";
@@ -67,8 +67,7 @@ function Component() {
       }
     } catch (err) {
       console.error(err);
-    }
-    finally{
+    } finally {
       setOpen(false);
     }
   };
@@ -101,7 +100,7 @@ function Component() {
           display: "flex",
           flexDirection: "column",
           m: 1,
-          width: "70vw",
+          width:"70vw",
           alignItems: "center",
         }}
         noValidate
@@ -109,8 +108,15 @@ function Component() {
       >
         <TextField
           fullWidth
+          size="medium"
           error={validation()}
           value={query}
+          onKeyDown={async (e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              await handleAPI();
+            }
+          }}
           onChange={(e) => setQuery(e.target.value)}
           margin="normal"
           id="outlined-basic"
@@ -151,11 +157,7 @@ function Component() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-        onClick={handleClose}
-      >
+      <Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open} onClick={handleClose}>
         <CircularProgress color="inherit" />
       </Backdrop>
     </Box>

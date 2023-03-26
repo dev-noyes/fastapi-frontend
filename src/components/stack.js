@@ -2,6 +2,10 @@ import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Decal, Float, OrbitControls, Preload, useTexture, Html, useProgress } from "@react-three/drei";
 
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+
 import css from "../assets/tech/css.png";
 import html from "../assets/tech/html.png";
 import javascript from "../assets/tech/javascript.png";
@@ -15,6 +19,24 @@ import docker from "../assets/tech/docker.png";
 import git from "../assets/tech/git.png";
 import redux from "../assets/tech/redux.png";
 
+const main = [
+  {
+    name: "React JS",
+    icon: reactjs,
+  },
+  {
+    name: "Node JS",
+    icon: nodejs,
+  },
+  {
+    name: "JavaScript",
+    icon: javascript,
+  },
+  {
+    name: "TypeScript",
+    icon: typescript,
+  },
+];
 const technologies = [
   {
     name: "HTML 5",
@@ -112,25 +134,30 @@ const Ball = (props) => {
 
 const BallCanvas = ({ icon }) => {
   return (
-    <Canvas frameloop="demand" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
-      </Suspense>
-      <Preload all />
-    </Canvas>
+    <Grid item xs={4} sm={4} md={3}>
+      <Canvas frameloop="demand" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls enableZoom={false} />
+          <Ball imgUrl={icon} />
+        </Suspense>
+        <Preload all />
+      </Canvas>
+    </Grid>
   );
 };
 
 const BallsCanvas = () => {
   return (
-    <div style={{ display: "flex", flexWrap:"wrap", flexDirection: "row", justifyContent: "center" }}>
-      {technologies.map((technology) => (
-        <div style={{ width: "10vw", height: "10vh" }} key={technology.name}>
-          <BallCanvas icon={technology.icon} />
-        </div>
-      ))}
-    </div>
+    <Box sx={{ flexGrow: 1 }}>
+      <Typography textAlign={"center"} color="#fefefe" variant="h5" sx={{ mt:10,mb: 3 }}>
+        Tech Spec
+      </Typography>
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        {main.map((technology) => (
+          <BallCanvas key={technology.name} icon={technology.icon} />
+        ))}
+      </Grid>
+    </Box>
   );
 };
 

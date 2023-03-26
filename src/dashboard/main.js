@@ -16,8 +16,6 @@ import Grid from "@mui/material/Grid";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 
 import MainListItems from "./listItems";
 
@@ -102,7 +100,7 @@ function DashboardContent() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              <Grid item xs={12} md={12} lg={12}>
+              <Grid item xs={12}>
                 <Box sx={{ p: 2, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                   <TypeAnimation
                     sequence={[
@@ -129,13 +127,8 @@ function DashboardContent() {
                       Youtube
                     </Button>
                   </a>
-                  <Typography color="#fefefe" variant="h6" sx={{ mb: 3 }}>
-                    주로 사용하는 기술
-                  </Typography>
+                  
                   <BallCanvas />
-                  <Typography color="#fefefe" variant="h6" sx={{ mt: 10 }}>
-                    전자책 - 크몽 입점
-                  </Typography>
                   <Career />
                 </Box>
               </Grid>

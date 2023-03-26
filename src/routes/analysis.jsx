@@ -67,7 +67,6 @@ function Component() {
       const res = await fetch(`https://fastapi-google-trend.up.railway.app/api/youtube_analysis?topic=${value}&region=${region}`);
       const json = await res.json();
       if (typeof json.result === "undefined") {
-        console.log(json);
         setData(json);
       } else {
         throw Error("404@API error");
@@ -126,6 +125,12 @@ function Component() {
           fullWidth
           error={validation()}
           value={value}
+          onKeyDown={async(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              await handleAPI();
+            }
+          }}
           onChange={(e) => setValue(e.target.value)}
           margin="normal"
           id="outlined-basic"
