@@ -16,58 +16,61 @@ import ImageColorPalette from "./routes/image-palette";
 import Memo from "./routes/memo";
 import Blog from "./routes/blog";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/qrcode",
-    element: <QRcode />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/color",
-    element: <Color />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/youtube-comment",
-    element: <Comment />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/google-trend",
-    element: <Trend />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/youtube-popular",
-    element: <Popular />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/youtube-analysis",
-    element: <Analysis />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/color_palette",
-    element: <ImageColorPalette />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/memo",
-    element: <Memo />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/blog",
-    element: <Blog />,
-    errorElement: <ErrorPage />,
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/qrcode",
+      element: <QRcode />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/color",
+      element: <Color />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/youtube-comment",
+      element: <Comment />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/google-trend",
+      element: <Trend />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/youtube-popular",
+      element: <Popular />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/youtube-analysis",
+      element: <Analysis />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/color_palette",
+      element: <ImageColorPalette />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/memo",
+      element: <Memo />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/blog",
+      element: <Blog />,
+      errorElement: <ErrorPage />,
+    },
+  ],
+  { basename: process.env.PUBLIC_URL }
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
