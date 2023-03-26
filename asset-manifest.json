@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/fastapi-frontend/static/css/main.20e30308.css",
+    "main.js": "/fastapi-frontend/static/js/main.10fc725a.js",
+    "static/js/787.9c737a48.chunk.js": "/fastapi-frontend/static/js/787.9c737a48.chunk.js",
+    "static/media/insta.png": "/fastapi-frontend/static/media/insta.9b2d8680e0f903e82451.png",
+    "static/media/book-2.png": "/fastapi-frontend/static/media/book-2.c0a540c6b62066de6d7b.png",
+    "static/media/book-1.png": "/fastapi-frontend/static/media/book-1.189af649b17548852c23.png",
+    "static/media/naver-blog.png": "/fastapi-frontend/static/media/naver-blog.97e4ed4fd8d4433287cb.png",
+    "index.html": "/fastapi-frontend/index.html",
+    "static/media/threejs.svg": "/fastapi-frontend/static/media/threejs.a02bc572667de670fbfb2173c0331d05.svg",
+    "main.20e30308.css.map": "/fastapi-frontend/static/css/main.20e30308.css.map",
+    "main.10fc725a.js.map": "/fastapi-frontend/static/js/main.10fc725a.js.map",
+    "787.9c737a48.chunk.js.map": "/fastapi-frontend/static/js/787.9c737a48.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.20e30308.css",
+    "static/js/main.10fc725a.js"
+  ]
+}
